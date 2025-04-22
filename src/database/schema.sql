@@ -1,14 +1,15 @@
 CREATE TABLE users (
-    id SERIAL PRIMARY KEY,
+    id_user SERIAL PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL
 );
 
 CREATE TABLE posts (
-    id SERIAL PRIMARY KEY,
+    id_post SERIAL PRIMARY KEY,
+    id_user INT NOT NULL,
     title VARCHAR(100) NOT NULL,
     image VARCHAR(200),
-    user_id INTEGER REFERENCES user(id) ON DELETE SET NULL
+    CONSTRAINT fk_user FOREIGN KEY (id_user) REFERENCES users(id_user)
 );
 
 INSERT INTO users (name, email) VALUES 
@@ -18,7 +19,7 @@ INSERT INTO users (name, email) VALUES
     ('Anna Beatriz', 'anna.beatriz@email.com'),
     ('Beatriz lima', 'beatriz.lima@email.com');
 
-INSERT INTO users (title, image, user_id) VALUES 
+INSERT INTO posts (title, image, id_user) VALUES 
     ('title 1', 'https://example.com/imagem1.jpeg', 1),
     ('title 2', 'https://example.com/imagem2.jpg', 2),
     ('title 3', 'https://example.com/imagem3.png', 3),
