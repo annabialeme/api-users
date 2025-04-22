@@ -27,9 +27,9 @@ const createUser = async (req, res) => {
         const newUser = await userModel.createUser(name, email);
         res.status(201).json(newUser);
     } catch (error) {
-	 console.log(error);
+	console.log(error);
         if (error.code === "23505") {
-            return res.status(400).json({ message: "E-mail já cadastrado." });
+            return res.status(400).json({ message: "User já cadastrado." });
         }
         res.status(500).json({ message: "Erro ao criar usuário." });
     }

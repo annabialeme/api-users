@@ -5,11 +5,11 @@ CREATE TABLE users (
 );
 
 CREATE TABLE posts (
-     id SERIAL PRIMARY KEY,
-     title VARCHAR(100) NOT NULL,
-     image VARCHAR(200),
-     user_id INTEGER REFERENCES user(id) ON DELETE SET NULL
- );
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(100) NOT NULL,
+    image VARCHAR(200),
+    user_id INTEGER REFERENCES user(id) ON DELETE SET NULL
+);
 
 INSERT INTO users (name, email) VALUES 
     ('Maria Parma', 'maria.parma@email.com'),
